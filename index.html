@@ -43,7 +43,81 @@
         <li>Music Player</li>
     <li>Tent for campaign</li>
      </ul>
-     <a href="aboutme.html">About me Illusion raju </a>
+<hr>
+   
+<table>
+    <tr>
+      <th>Food/Drink</th>
+      <th>Location</th>
+      <th>Price</th>
+    </tr>
+    <tr>
+      <td>Butter Naan</td>
+      <td>Saroornagar</td>
+      <td>1$</td>
+    </tr>
+    <tr>
+        <td>Falooda</td>
+      <td>Dilsukhnagar</td>
+      <td>2$</td>
+      
+    </tr>
+    <tr>
+        <td>vada pav</td>
+        <td>karmanghat</td>
+        <td>2$</td>
+    </tr>
+    <tr>
+        <td>pav Bhaji</td>
+        <td>Malakpet</td>
+        <td>3$</td>
+    </tr>
+  </table>
+  <hr>
+  <h3>Dijkstra Algorithm</h3>
+ 
+    <blockquote>
+     In Dijkstra Algorithm You are given a directed or undirected weighted graph with n vertices and m edges. The weights of all edges are non-negative. You are also given a starting vertex s. This article discusses finding the lengths of the shortest paths from a starting vertex s to all other vertices, and output the shortest paths themselves.
+    This problem is also called single-source shortest paths problem.
+    </blockquote>
+
+    <pre>
+        const int INF = 1000000000;
+        vector<vector<pair<int, int>>> adj;
+
+        void dijkstra(int s, vector<int> & d, vector<int> & p) {
+        int n = adj.size();
+        d.assign(n, INF);
+        p.assign(n, -1);
+        vector<bool> u(n, false);
+
+        d[s] = 0;
+        for (int i = 0; i < n; i++) {
+        int v = -1;
+        for (int j = 0; j < n; j++) {
+            if (!u[j] && (v == -1 || d[j] < d[v]))
+                v = j;
+        }
+
+        if (d[v] == INF)
+            break;
+
+        u[v] = true;
+        for (auto edge : adj[v]) {
+            int to = edge.first;
+            int len = edge.second;
+
+            if (d[v] + len < d[to]) {
+                d[to] = d[v] + len;
+                p[to] = v;
+            }
+        }
+      }
+    }
+
+    </pre>
+
+  <a href="aboutme.html">About me Illusion raju </a>
 
   </body>
 </html>
